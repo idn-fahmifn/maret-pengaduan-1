@@ -55,14 +55,14 @@
                                         <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">
                                             {{$item->judul_laporan}}
                                         </td>
-                                        
+
                                         <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">
                                             @if ($item->status == 'pending')
                                                 <span
                                                     class="bg-gray-400 py-1 px-4 text-xs uppercase rounded-full">pending</span>
                                             @elseif ($item->status == 'diproses')
                                                 <span
-                                                    class="bg-green-400 py-1 px-4 text-xs uppercase rounded-full">pending</span>
+                                                    class="bg-green-400 py-1 px-4 text-xs uppercase rounded-full">diproses</span>
                                             @elseif ($item->status == 'selesai')
                                                 <span
                                                     class="bg-green-700 py-1 px-4 text-xs uppercase rounded-full">selesai</span>
@@ -73,7 +73,7 @@
                                         </td>
                                         
                                         <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">
-                                            {{$item->tanggal_laporan}}
+                                           {{$item->tanggal_laporan->diffForHumans()}}
                                         </td>
                                     </tr>
                                 @endforeach
