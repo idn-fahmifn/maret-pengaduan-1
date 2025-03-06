@@ -44,10 +44,12 @@
                         </table>
                         <div class="mt-4 mb-6">
                             <form action="{{route('laporan.delete', $data->id)}}" method="post">
-                                @csrf 
+                                @csrf
                                 @method('delete')
-                                <a href="{{route('laporan.edit', $data->id)}}" class="text-red-500 border border-red-500 py-2 px-4 rounded-md">edit</a>
-                                <button class="bg-red-500 py-2 px-4 rounded-md text-sm text-white ms-2" onclick="return confirm('Yakin mau dihapus?')">hapus</button>
+                                <a href="{{route('laporan.edit', $data->id)}}"
+                                    class="text-red-500 border border-red-500 py-2 px-4 rounded-md">Respon</a>
+                                <button class="bg-red-500 py-2 px-4 rounded-md text-sm text-white ms-2"
+                                    onclick="return confirm('Yakin mau dihapus?')">hapus</button>
                             </form>
                         </div>
                     </div>
@@ -57,13 +59,13 @@
             <div class="mt-4">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 
-                    {{$respon}}
-
-                    <div class="py-4 px-4">
-                        {{-- judul pada card halaman --}}
-                        <h4 class="text-lg font-semibold dark:text-gray-200 text-gray-700">Detail Respon</h4>
-                        <span class="text-sm dark:text-gray-200 text-gray-700">3 menit yang lalu</span>
-                    </div>
+                    @foreach ($respon as $item)
+                        <div class="py-4 px-4">
+                            {{-- judul pada card halaman --}}
+                            <h4 class="text-lg font-semibold dark:text-gray-200 text-gray-700">Detail Respon</h4>
+                            <span class="text-sm dark:text-gray-200 text-gray-700">3 menit yang lalu</span>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
