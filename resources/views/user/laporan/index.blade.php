@@ -39,16 +39,22 @@
 
                     {{-- Area tabel --}}
 
-                    <div class="overflow-x-auto mt-4">
-                        <table class="min-w-full bg-gray-200 dark:bg-transparent py-2">
+                    <div class="overflow-x-auto mt-6">
+                        <table class="min-w-full bg-white dark:bg-transparent py-2">
                             <thead class="border border-x-0 border-gray-500">
-                                <th class="py-2 px-4 text-gray-500 dark:text-gray-200 uppercase">judul laporan</th>
-                                <th class="py-2 px-4 text-gray-500 dark:text-gray-200 uppercase">status</th>
-                                <th class="py-2 px-4 text-gray-500 dark:text-gray-200 uppercase">dibuat</th>
+                                <th class="py-2 px-4 text-gray-500 dark:text-gray-200 uppercase text-xs text-start">judul laporan</th>
+                                <th class="py-2 px-4 text-gray-500 dark:text-gray-200 uppercase text-xs text-start">status</th>
+                                <th class="py-2 px-4 text-gray-500 dark:text-gray-200 uppercase text-xs text-start">dibuat</th>
                             </thead>
+                            <tbody>
+                                <tr class="border border-x-0 border-gray-500">
+                                    <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, molestias.</td>
+                                    <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">status</td>
+                                    <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">3 menit yang lalu</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
