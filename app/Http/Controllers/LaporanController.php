@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanController extends Controller
 {
@@ -35,6 +36,9 @@ class LaporanController extends Controller
             $input['dokumentasi'] = $nama;
         }
         $input['tanggal_laporan'] = Carbon::now()->format('Y-m-d H:i:s');
+        $input['id_user'] = Auth::user()->id;
+
+        return $input;
 
     }
 }

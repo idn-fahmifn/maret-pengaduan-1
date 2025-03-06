@@ -13,7 +13,7 @@
                     <h4 class="text-lg font-semibold dark:text-gray-200 text-gray-700">Buat Laporan Baru</h4>
                     <span class="text-sm dark:text-gray-200 text-gray-700">Form mengajukan laporan baru, silakan masukan
                         laporan dibawah ini.</span>
-                    <form action="#" method="post">
+                    <form action="{{route('laporan.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mt-4">
                             <x-input-label for="judul_laporan" :value="__('Judul Laporan')" />
@@ -27,7 +27,7 @@
                         </div>
                         <div class="mt-4">
                             <x-input-label for="detail_laporan" :value="__('Detail laporan')" />
-                            <textarea id="detail_laporan" name="detail_laporan" class="mt-1 block w-full bg-transparent rounded-md" required autofocus></textarea>
+                            <textarea id="detail_laporan" name="detail_laporan" class="mt-1 block w-full bg-transparent dark:text-gray-200 rounded-md" required autofocus></textarea>
                             <x-input-error class="mt-2" :messages="$errors->get('detail_laporan')" />
                         </div>
                         <div class="mt-4">
