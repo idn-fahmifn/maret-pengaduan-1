@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,10 @@ Route::prefix('user')->middleware(['auth', 'verified'])->group(function(){
     Route::get('/dashboard', function () {
         return view('user.dashboard');//halaman yang akan ditampilkan
     })->name('dashboard.user');
+    
+    Route::get('myreport', [LaporanController::class, 'index'])->name('laporan.index'); //index laporan saya
+
+
 });
 
 
