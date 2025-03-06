@@ -43,9 +43,11 @@
                             </tbody>
                         </table>
                         <div class="mt-4 mb-6">
-                            <form action="" method="post">
+                            <form action="{{route('laporan.delete', $data->id)}}" method="post">
                                 @csrf 
-                                <a href="" class="text-red-500 border border-red-500 py-2 px-4">edit</a>
+                                @method('delete')
+                                <a href="{{route('laporan.edit', $data->id)}}" class="text-red-500 border border-red-500 py-2 px-4 rounded-md">edit</a>
+                                <button class="bg-red-500 py-2 px-4 rounded-md text-sm text-white ms-2" onclick="return confirm('Yakin mau dihapus?')">hapus</button>
                             </form>
                         </div>
                     </div>

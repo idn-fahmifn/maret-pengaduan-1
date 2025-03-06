@@ -31,6 +31,10 @@ Route::prefix('user')->middleware(['auth', 'verified'])->group(function(){
     Route::get('myreport/create', [LaporanController::class, 'create'])->name('laporan.create'); //create laporan saya
     Route::post('laporan', [LaporanController::class, 'store'])->name('laporan.store'); //mengirimkan data
     Route::get('myreport/{param}', [LaporanController::class, 'detail'])->name('laporan.detail'); //detail laporan saya
+    Route::get('myreport/{param}/edit', [LaporanController::class, 'edit'])->name('laporan.edit'); //edit laporan saya
+    Route::put('myreport/{param}', [LaporanController::class, 'update'])->name('laporan.update'); //detail laporan saya
+    Route::delete('myreport/{param}', [LaporanController::class, 'delete'])->name('laporan.delete'); //detail laporan saya
+
 
 
 

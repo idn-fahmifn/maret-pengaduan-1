@@ -6,6 +6,7 @@ use App\Models\Laporan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class LaporanController extends Controller
 {
@@ -48,6 +49,44 @@ class LaporanController extends Controller
     {
         $data = Laporan::find($id);
         return view('user.laporan.detail', compact('data'));
+    }
+
+    public function edit($id)
+    {
+        $data = Laporan::findOrFail($id);
+        return view('user.laporan.edit', compact('data'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $input = $request->all();
+        $data = Laporan::findOrFail($id);
+
+        $request->validate([
+            'judul_laporan' => 'required|string|min:5|max:50',
+            'dokumentasi' => 'max:10240',
+            'detail_laporan' => 'required'
+        ]);
+        if($request->hasFile('dokumentasi'))
+        {
+            $gambar = $request->file('dokumentasi');
+            $path = 'public/images/laporan';
+            $ext = $gambar->getClientOriginalExtension();
+            $nama = 'dokumentasi_laporan_'.Carbon::now()->format('YmdHis').'.'.$ext;
+            $gambar->storeAs($path, $nama);
+            $input['dokumentasi'] = $nama;
+
+            Storage::delete('public/images/laporan/'.$data->dokumentasi);
+        }
+
+        $data->update($input);
+        return redirect()->route('laporan.detail', $data->id)->with('success', 'Laporan Berhasil Dibuat');
+    }
+    public function delete($id)
+    {
+        $data = Laporan::findOrFail($id);
+        $data->delete();
+        return redirect()->route('laporan.index')->with('success','Laporan sudah dihapus');
     }
 
 }
