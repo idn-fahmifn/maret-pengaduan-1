@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Laporan;
+use App\Models\Respon;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +49,8 @@ class LaporanController extends Controller
     public function detail($id)
     {
         $data = Laporan::find($id);
-        return view('user.laporan.detail', compact('data'));
+        $respon = Respon::where('id_laporan', $id)->get()->all();
+        return view('user.laporan.detail', compact('data', 'respon'));
     }
 
     public function edit($id)

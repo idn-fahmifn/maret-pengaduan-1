@@ -11,6 +11,8 @@ class Respon extends Model
         'id_laporan', 'isi_respon', 'tanggal_respon'
     ];
 
+    protected $casts = ['tanggal_respon' => 'datetime'];
+
     public function respon()
     {
         return $this->belongsTo(Respon::class, 'id_laporan');

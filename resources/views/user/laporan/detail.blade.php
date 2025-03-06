@@ -56,11 +56,13 @@
 
             <div class="mt-4">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="py-4 px-4">
-                        {{-- judul pada card halaman --}}
-                        <h4 class="text-lg font-semibold dark:text-gray-200 text-gray-700">Detail Respon</h4>
-                        <span class="text-sm dark:text-gray-200 text-gray-700">3 menit yang lalu</span>
-                    </div>
+                    @foreach ($respon as $item)
+                        <div class="py-4 px-4">
+                            {{-- judul pada card halaman --}}
+                            <h4 class="text-lg font-semibold dark:text-gray-200 text-gray-700">{{$item->isi_respon}}</h4>
+                            <span class="text-sm dark:text-gray-200 text-gray-700">{{$item->tanggal_respon->diffForHumans()}}</span>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
