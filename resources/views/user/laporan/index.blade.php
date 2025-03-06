@@ -42,16 +42,41 @@
                     <div class="overflow-x-auto mt-6">
                         <table class="min-w-full bg-white dark:bg-transparent py-2">
                             <thead class="border border-x-0 border-gray-500">
-                                <th class="py-2 px-4 text-gray-500 dark:text-gray-200 uppercase text-xs text-start">judul laporan</th>
-                                <th class="py-2 px-4 text-gray-500 dark:text-gray-200 uppercase text-xs text-start">status</th>
-                                <th class="py-2 px-4 text-gray-500 dark:text-gray-200 uppercase text-xs text-start">dibuat</th>
+                                <th class="py-2 px-4 text-gray-500 dark:text-gray-200 uppercase text-xs text-start">
+                                    judul laporan</th>
+                                <th class="py-2 px-4 text-gray-500 dark:text-gray-200 uppercase text-xs text-start">
+                                    status</th>
+                                <th class="py-2 px-4 text-gray-500 dark:text-gray-200 uppercase text-xs text-start">
+                                    dibuat</th>
                             </thead>
                             <tbody>
-                                <tr class="border border-x-0 border-gray-500">
-                                    <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, molestias.</td>
-                                    <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">status</td>
-                                    <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">3 menit yang lalu</td>
-                                </tr>
+                                @foreach ($data as $item)
+                                    <tr class="border border-x-0 border-gray-500">
+                                        <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">
+                                            {{$item->judul_laporan}}
+                                        </td>
+                                        
+                                        <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">
+                                            @if ($item->status == 'pending')
+                                                <span
+                                                    class="bg-gray-400 py-1 px-4 text-xs uppercase rounded-full">pending</span>
+                                            @elseif ($item->status == 'diproses')
+                                                <span
+                                                    class="bg-green-400 py-1 px-4 text-xs uppercase rounded-full">pending</span>
+                                            @elseif ($item->status == 'selesai')
+                                                <span
+                                                    class="bg-green-700 py-1 px-4 text-xs uppercase rounded-full">selesai</span>
+                                            @else
+                                                <span
+                                                    class="bg-red-500 py-1 px-4 text-xs uppercase rounded-full">ditolak</span>
+                                            @endif
+                                        </td>
+                                        
+                                        <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">
+                                            {{$item->tanggal_laporan}}
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

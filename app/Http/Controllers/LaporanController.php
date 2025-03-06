@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Laporan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,8 @@ class LaporanController extends Controller
 {
     public function index()
     {
-        return view('user.laporan.index');
+        $data = Laporan::where('id_user', Auth::user()->id)->get()->all();
+        return view('user.laporan.index', compact('data'));
     }
     public function create()
     {
@@ -31,14 +33,16 @@ class LaporanController extends Controller
             $gambar = $request->file('dokumentasi');
             $path = 'public/images/laporan';
             $ext = $gambar->getClientOriginalExtension();
-            $nama = 'dokumentasi_laporan_'.Carbon::now()->format('YmdHis').$ext;
+            $nama = 'dokumentasi_laporan_'.Carbon::now()->format('YmdHis').'.'.$ext;
             $gambar->storeAs($path, $nama);
             $input['dokumentasi'] = $nama;
         }
         $input['tanggal_laporan'] = Carbon::now()->format('Y-m-d H:i:s');
         $input['id_user'] = Auth::user()->id;
 
-        return $input;
+        Laporan::create($input);
+        return redirect()->route('laporan.index')->with('success', 'Laporan Berhasil Dibuat');
+        
 
     }
 }
