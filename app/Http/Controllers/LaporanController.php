@@ -42,7 +42,12 @@ class LaporanController extends Controller
 
         Laporan::create($input);
         return redirect()->route('laporan.index')->with('success', 'Laporan Berhasil Dibuat');
-        
-
     }
+
+    public function detail($id)
+    {
+        $data = Laporan::find($id);
+        return view('user.laporan.detail', compact('data'));
+    }
+
 }

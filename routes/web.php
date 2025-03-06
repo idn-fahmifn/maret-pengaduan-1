@@ -28,8 +28,10 @@ Route::prefix('user')->middleware(['auth', 'verified'])->group(function(){
     })->name('dashboard.user');
     
     Route::get('myreport', [LaporanController::class, 'index'])->name('laporan.index'); //index laporan saya
-    Route::get('myreport/create', [LaporanController::class, 'create'])->name('laporan.create'); //index laporan saya
-    Route::post('laporan', [LaporanController::class, 'store'])->name('laporan.store');
+    Route::get('myreport/create', [LaporanController::class, 'create'])->name('laporan.create'); //create laporan saya
+    Route::post('laporan', [LaporanController::class, 'store'])->name('laporan.store'); //mengirimkan data
+    Route::get('myreport/{param}', [LaporanController::class, 'detail'])->name('laporan.detail'); //detail laporan saya
+
 
 
 });
