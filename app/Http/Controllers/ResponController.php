@@ -27,4 +27,9 @@ class ResponController extends Controller
         return view('respon.respon', compact('data'));
     }
 
+    public function store(Request $request)
+    {
+        
+    }
+
 }

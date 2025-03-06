@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Buat Laporan') }}
+            {{ __('Respon Laporan') }}
         </h2>
     </x-slot>
 
@@ -10,31 +10,26 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="py-6 px-6">
                     {{-- judul pada card halaman --}}
-                    <h4 class="text-lg font-semibold dark:text-gray-200 text-gray-700">Buat Laporan Baru</h4>
-                    <span class="text-sm dark:text-gray-200 text-gray-700">Form mengajukan laporan baru, silakan masukan
-                        laporan dibawah ini.</span>
-                    <form action="{{route('laporan.update', $data->id)}}" method="post" enctype="multipart/form-data">
+                    <h4 class="text-lg font-semibold dark:text-gray-200 text-gray-700">Merespon Laporan {{$data->judul_laporan}}</h4>
+                    <span class="text-sm dark:text-gray-200 text-gray-700">Memberikan respon terhadap laporan yang masuk.</span>
+                    <form action="" method="post" enctype="multipart/form-data">
                         @csrf
-                        @method('put')
                         <div class="mt-4">
-                            <x-input-label for="judul_laporan" :value="__('Judul Laporan')" />
-                            <x-text-input id="judul_laporan" name="judul_laporan" value="{{$data->judul_laporan}}" type="text" class="mt-1 block w-full bg-transparent" required autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('judul_laporan')" />
+                            <x-input-label for="status" :value="__('Ubah status laporan')" />
+                            <select name="status" class="mt-1 block w-full bg-transparent dark:text-gray-200 rounded-md">
+                                <option value="diproses">diproses</option>
+                                <option value="selesai">selesai</option>
+                                <option value="ditolak">ditolak</option>
+                            </select>
                         </div>
                         <div class="mt-4">
-                            <x-input-label for="dokumentasi" :value="__('Dokumentasi Laporan')" />
-                            <x-text-input id="dokumentasi" name="dokumentasi" value="{{$data->dokumentasi}}" type="file" class="mt-1 block w-full bg-transparent" autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('dokumentasi')" />
-                        </div>
-                        <div class="mt-4">
-                            <x-input-label for="detail_laporan" :value="__('Detail laporan')" />
-                            <textarea id="detail_laporan" name="detail_laporan" class="mt-1 block w-full bg-transparent dark:text-gray-200 rounded-md" cols="0" required autofocus>
-                                {{$data->detail_laporan}}
+                            <x-input-label for="isi_respon" :value="__('Isi Respon')" />
+                            <textarea id="isi_respon" name="isi_respon" class="mt-1 block w-full bg-transparent dark:text-gray-200 rounded-md" cols="0" required autofocus>
                             </textarea>
-                            <x-input-error class="mt-2" :messages="$errors->get('detail_laporan')" />
+                            <x-input-error class="mt-2" :messages="$errors->get('isi_respon')" />
                         </div>
                         <div class="mt-4">
-                            <button type="submit" class="bg-red-500 hover:bg-red-500 py-2 px-4 text-white text-sm rounded-md">Edit Laporan</button>
+                            <button type="submit" class="bg-red-500 hover:bg-red-500 py-2 px-4 text-white text-sm rounded-md">Tambah Respon</button>
                         </div>
                     </form>
                 </div>
