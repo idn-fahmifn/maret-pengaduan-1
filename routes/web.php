@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResponController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,10 @@ Route::prefix('admin')->middleware(['auth', 'verified', AdminMiddleware::class])
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('semua-laporan', [ResponController::class, 'index'])->name('respon.index'); //index semua laporan
+    Route::get('laporan/{param}', [ResponController::class, 'detail'])->name('respon.detail'); //detail laporan
+
 });
 
 // Routing bagian user
