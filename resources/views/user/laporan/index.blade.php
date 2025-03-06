@@ -31,7 +31,7 @@
                             </form>
                         </div>
                         <div class="text-start sm:text-end md:text-end lg:text-end">
-                            <a href="#"
+                            <a href="{{route('laporan.create')}}"
                                 class="text-md font-semibold bg-red-500 hover:bg-red-600 text-gray-200 py-2 px-4 rounded-md">Buat
                                 Laporan</a>
                         </div>
@@ -53,7 +53,7 @@
                                 @foreach ($data as $item)
                                     <tr class="border border-x-0 border-gray-500">
                                         <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">
-                                            {{$item->judul_laporan}}
+                                            <a href="{{route('laporan.detail',$item->id)}}" class="">{{$item->judul_laporan}}</a>
                                         </td>
 
                                         <td class="py-2 px-4 text-gray-500 dark:text-gray-200 text-xs">
