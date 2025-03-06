@@ -8,7 +8,7 @@ class Respon extends Model
 {
     protected $table = 'respon';
     protected $fillable =[
-        'id_laporan', 'isi_laporan', 'tanggal_respon'
+        'id_laporan', 'isi_respon', 'tanggal_respon'
     ];
 
     public function respon()

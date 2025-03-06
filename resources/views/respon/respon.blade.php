@@ -12,7 +12,7 @@
                     {{-- judul pada card halaman --}}
                     <h4 class="text-lg font-semibold dark:text-gray-200 text-gray-700">Merespon Laporan {{$data->judul_laporan}}</h4>
                     <span class="text-sm dark:text-gray-200 text-gray-700">Memberikan respon terhadap laporan yang masuk.</span>
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{route('respon.store', $data->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mt-4">
                             <x-input-label for="status" :value="__('Ubah status laporan')" />
